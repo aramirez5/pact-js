@@ -1,5 +1,5 @@
 {
-  "name": "tau-pact-nodejs-course",
+  "name": "pact-nodejs",
   "version": "1.0.0",
   "description": "A simple Nodejs + jest project configuring contract tests with PactJS",
   "main": "src/index.js",
