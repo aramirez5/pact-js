@@ -2,7 +2,7 @@ const path = require("path")
 const { Verifier } = require("@pact-foundation/pact")
 const { server, importData } = require("../../../src/provider")
 
-const SERVER_URL = "http://localhost:8081"
+const SERVER_URL = "http://127.0.0.1:8081"
 
 server.listen(8081, () => {
     importData()
@@ -15,7 +15,7 @@ server.listen(8081, () => {
             provider: "Clients Service",
             logLevel: "DEBUG",
             providerBaseUrl: SERVER_URL,
-            pactUrls: ['http://localhost:9292/pacts/provider/ClientsService/consumer/Frontend/latest'],
+            pactUrls: ['http://127.0.0.1:9292/pacts/provider/ClientsService/consumer/Frontend/latest'],
             // pactUrls: [path.resolve(process.cwd(), "./__tests__/contract/pacts/frontend-clientsservice.json")],
             consumerVersionTags: ["dev"],
             providerVersionTags: ["dev"],
