@@ -26,23 +26,21 @@ jobs:
         with:
           node-version: 18
 
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3  
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
-
-      # - name: Start containers
-      #   run: |
-      #     sudo docker-compose up -d
-
-      # - name: Wait until containers are done
-      #   run: sleep 10
+        shell: bash
 
       - name: Test consumer
         run: |
-          chmod 777 /opt/hostedtoolcache/node/18.16.0/x64/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin 
           npm run test:consumer
-
-      # - name: Publish contract
-      #   run: npm run publish:contract
 
       - name: Test provider
         run: npm run test:provider
