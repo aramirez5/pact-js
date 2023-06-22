@@ -37,7 +37,9 @@ jobs:
       #   run: sleep 10
 
       - name: Test consumer
-        run: npm run test:consumer
+        run: |
+          chmod 777 /opt/hostedtoolcache/node/18.16.0/x64/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin 
+          npm run test:consumer
 
       # - name: Publish contract
       #   run: npm run publish:contract
